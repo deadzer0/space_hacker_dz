@@ -1,0 +1,30 @@
+{% extends '@Game/admin/base_admin.html.twig' %}
+
+{% block title %}
+    {{ parent() }} :: View
+{% endblock %}
+
+{% block body %}
+
+    {% block nav %}
+        {{ parent() }}
+    {% endblock %}
+
+    {#{%  block admin %}#}
+        {#{{ parent() }}#}
+    {#{% endblock %}#}
+
+    <div class="bg-primary text-white text-left">
+        <p>View the list of:</p>
+    </div>
+    <div>
+        <p><a href="{{ url ('races_index') }}">Races</a></p>
+        <p><a href="{{ url ('planets_index') }}">Planets</a></p>
+        <p><a href="{{ url ('users_index') }}">Players</a></p>
+    </div>
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

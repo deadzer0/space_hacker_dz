@@ -1,0 +1,47 @@
+{% extends 'GameBundle:admin:base_admin.html.twig' %}
+
+{% block title %}
+    {{ parent() }} :: Races
+{% endblock %}
+
+{% block body %}
+
+    {% block nav %}
+        {{ parent() }}
+    {% endblock %}
+
+    <div class="text-center">
+        <h1>Races</h1>
+    </div>
+
+    <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        {% for race in races %}
+            <tr>
+                <td><a href="{{ path('races_show', { 'id': race.id }) }}">{{ race.id }}</a></td>
+                <td>{{ race.name }}</td>
+                <td>
+                    <ul>
+                        <li class="btn btn-info">
+                            <a href="{{ path('races_show', { 'id': race.id }) }}">More info</a>
+                        </li>
+                        <li class="btn btn-info">
+                            <a href="{{ path('races_edit', { 'id': race.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <ul>
+        <li class="btn btn-danger">
+            <a href="{{ path('races_new') }}">Create a new race</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- HTML5 Boilerplate -->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+
+    <title>
+        {% block title %}
+            Space Hacker &copy;
+        {% endblock %}
+    </title>
+    {% block meta %}
+        {# Always force latest IE rendering engine & Chrome Frame #}
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description"
+              content="This is 'Space Hackers' web game, designed with Responsive Grid System, a quick, easy and flexible way to create a responsive web site.">
+        <meta name="keywords" content="responsive, grid, system, web design, game, hackers">
+        <meta name="DeadZero" content="www.spacehackers-dz.bg"> <!-- fake url-->
+        <meta http-equiv="cleartype" content="on">
+
+        {# Responsive and mobile friendly stuff #}
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta charset="UTF-8"/>
+    {% endblock %}
+
+    {% block stylesheets %}
+
+        {# CSS #}
+        <link href="{{ asset ('css/styles.css') }}" type="text/css" rel="stylesheet">
+        {#<link type="text/css" href="{{ asset ('assets/css/col.css') }}">#}
+        {#<link type="text/css" href="{{ asset ('assets/css/2cols.css') }}">#}
+        {#<link type="text/css" href="{{ asset ('assets/css/3cols.css') }}">#}
+        {#<link type="text/css" href="{{ asset ('assets/css/4cols.css') }}">#}
+        {#<link type="text/css" href="{{ asset ('assets/css/5cols.css') }}">#}
+        {#<link type="text/css" href="{{ asset ('assets/css/6cols.css') }}">#}
+        {#<link type="text/css" href="{{ asset ('assets/css/7cols.css') }}">#}
+        {#<link type="text/css" href="{{ asset ('assets/css/8cols.css') }}">#}
+        {#<link type="text/css" href="{{ asset ('assets/css/9cols.css') }}">#}
+        {#<link type="text/css" href="{{ asset ('assets/css/10cols.css') }}">#}
+        {#<link type="text/css" href="{{ asset ('assets/css/11cols.css') }}">#}
+        {#<link type="text/css" href="{{ asset ('assets/css/12cols.css') }}">#}
+        <link type="text/css" href="{{ asset ('css/html5reset.css') }}">
+
+        {# Bootstrap CDN css #}
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+                  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    </head>
+
+    <body>
+        {% block body %}
+
+            {%  block admin %}
+                <h4 class="text-right text-info">Здравейте, <a href="{{ path ('fos_user_profile_show') }}"> {{ app.user.username }}</a></h4>
+                <h5 class="text-right text-info">последен вход: {{ app.user.lastLogin|date('Y-m-d H:i:s') }}</a></h5>
+            {% endblock %}
+
+        {% endblock %}
+
+        {% block javascripts %}
+            {# Bootstrap CDN js#}
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            {# jQuery CDN #}
+            <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+                    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+                    crossorigin="anonymous"></script>
+
+            {# js custom files#}
+            <script src="{{ asset('js/title.js') }}"></script>
+            <script src="{{ asset('js/index.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

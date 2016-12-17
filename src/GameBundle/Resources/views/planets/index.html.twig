@@ -1,0 +1,62 @@
+{% extends 'GameBundle:admin:base_admin.html.twig' %}
+
+{% block title %}
+    {{ parent() }} :: Planets
+{% endblock %}
+
+{% block body %}
+
+    {% block nav %}
+        {{ parent() }}
+    {% endblock %}
+
+    <div class="text-center">
+        <h1>Planets</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>X</th>
+                <th>Y</th>
+                <th>Description</th>
+                <th>Owner</th>
+                <th>Resources</th>
+                <th>Buildings</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for planet in planets %}
+            <tr>
+                <td><a href="{{ path('planets_show', { 'id': planet.id }) }}">{{ planet.id }}</a></td>
+                <td>{{ planet.name }}</td>
+                <td>{{ planet.x }}</td>
+                <td>{{ planet.y }}</td>
+                <td>{{ planet.description }}</td>
+                <td>{{ planet.owner }}</td>
+                <td>{{ planet.resources }}</td>
+                <td>{{ planet.buildings }}</td>
+                <td>
+                    <ul>
+                        <li class="btn btn-info">
+                            <a href="{{ path('planets_show', { 'id': planet.id }) }}">show</a>
+                        </li>
+                        <li class="btn btn-info">
+                            <a href="{{ path('planets_edit', { 'id': planet.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li class="btn btn-danger">
+            <a href="{{ path('planets_new') }}">Create a new planet</a>
+        </li>
+    </ul>
+{% endblock %}

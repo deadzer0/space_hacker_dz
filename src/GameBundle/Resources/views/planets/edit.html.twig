@@ -1,0 +1,25 @@
+{% extends '@Game/base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} :: Edit Planet
+{% endblock %}
+
+{% block body %}
+    <h1>Planet edit</h1>
+
+    {{ form_start(edit_form, {attr: {class: "table"}}) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('planets_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

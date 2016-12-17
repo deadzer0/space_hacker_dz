@@ -1,0 +1,71 @@
+{% extends '@Game/base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} :: Начална страница
+{% endblock %}
+
+{% block body %}
+
+    {# navbar & social media buttons #}
+    <div class="navblock">
+        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-file"></span> {{ 'default.index.game_rules'|trans }}</a>
+        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> {{ 'default.index.terms_of_use'|trans }}</a>
+        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-book"></span> {{ 'default.index.wiki'|trans }}</a>
+        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-comment"></span> {{ 'default.index.faq'|trans }}</a>
+        <a href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Facebook</a>
+        {% if  app.user != null %}
+            <a href="{{ url ('fos_user_profile_show') }}" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-user"></span> {{ 'default.index.profile'|trans }}</a>
+            {% if app.user != null and is_granted('ROLE_ADMIN') %}
+                <a href="{{ url('admin') }}" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-log-in"></span> {{ 'default.index.admin'|trans }}</a>
+            {% endif %}
+        {% endif %}
+    </div>
+    {# end of navbar#}
+
+    {# Title, background and music#}
+    <div class="section group">
+        <div class="typewriter" id="title">
+            <h1>Space Hacker</h1>
+        </div>
+            <h2 id="byauthor">v. 1.0.6</h2>
+
+        <a href="https://github.com/deadzer0"><img style="position: absolute; top: 0; left: 0; border: 0;"
+                                                   src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67"
+                                                   alt="Fork me on GitHub"
+                                                   data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
+        <img class="response" src="{{ asset('images/background.jpg') }}" alt="space hackers background">
+
+        <audio controls autoplay loop hidden>
+            <source src="{{ asset('sounds/ambient-background.mp3') }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        {# end of title, background and music#}
+
+        {% if app.user == null %}
+            <div id="logged-user">
+                <h4 class="text-left">{{ 'default.index.hello_anon'|trans }}</h4>
+            </div>
+            <div class="container position">
+                <a href="{{ path('fos_user_security_login') }}" class="btn btn-lg btn-warning"><span
+                            class="glyphicon glyphicon-user"></span>{{ 'default.index.login'|trans }}</a>
+                <a href="{{ path('fos_user_registration_register') }}" class="btn btn-lg btn-danger"><span
+                            class="glyphicon glyphicon-user"></span>{{ 'default.index.registration'|trans }}</a>
+            </div>
+        {% else %}
+            <div id="logged-user"><h4 class="text-left">{{ 'default.index.hello_logged'|trans }} <a
+                            href="{{ path ('fos_user_profile_show') }}"> {{ app.user.username }}</a></h4>
+                <h6 class="text-left">{{ 'default.index.last_login'|trans }}:
+                    {{ app.user.lastLogin|date('Y-m-d H:i:s') }}<br>
+                    <a href="{{ url('fos_user_security_logout') }}"><span
+                                class="glyphicon glyphicon-log-out">{{ 'default.index.logout'|trans }}</span></a><br>
+                </h6>
+            </div>
+
+        {% endif %}
+    </div>
+
+    <footer id="footr">
+            <h4>&copy {{ "now"|date("Y") }}, Deadzero</h4>
+    </footer>
+
+{% endblock %}

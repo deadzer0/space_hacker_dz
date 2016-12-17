@@ -1,0 +1,51 @@
+{% extends '@Game/base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} :: Races description
+{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <tbody class="text-center">
+            <tr>
+                <td><h1>{{ race.name }}</h1></td>
+
+            </tr>
+            <tr>
+                <td>
+                    {% if race.name == 'Humans'  %}
+                    <img src="{{ asset('images/humans.jpg') }}" alt="humans" width="200" height="300">
+                    {% elseif race.name == 'Goa\'uld' %}
+                        <img src="{{ asset('images/Goa\'uld.jpg') }}" alt="humans" width="400" height="300">
+                    {% elseif race.name == 'Replicators' %}
+                        <img src="{{ asset('images/replicators.jpg') }}" alt="humans" width="400" height="300">
+                    {% elseif race.name == 'Hominux' %}
+                        <img src="{{ asset('images/hominuxjpg') }}" alt="humans" width="400" height="300">
+                    {% else %}
+                    <img src="{{ asset('images/orians.jpg') }}" alt="humans" width="400" height="300">
+
+                    {% endif  %}
+                </td>
+            </tr>
+            <tr>
+
+                <td>{{ race.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <ul>
+        <li class="btn btn-warning ">
+            <a href="{{ path('races_index') }}">Back to the list</a>
+        </li>
+        <li class="btn btn-warning ">
+            <a href="{{ path('races_edit', { 'id': race.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,22 @@
+default:
+  index:
+    game_rules: 'Rules'
+    terms_of_use: 'Terms of use'
+    wiki: 'Wiki'
+    faq: 'FAQ'
+    profile: 'Profile'
+    admin: 'Admin'
+    hello_anon: 'Hello, Guest'
+    hello_logged: 'Hello, '
+    login: 'Login'
+    registration: 'Registration'
+    last_login: 'last login: '
+    logout: 'Logout'
+
+admin:
+  base:
+    home: 'Home'
+    view: 'View'
+    planets: 'Planets'
+    races: 'Races'
+    players: 'Players'

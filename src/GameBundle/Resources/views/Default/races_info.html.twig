@@ -1,0 +1,14 @@
+{%  extends 'base.html.twig' %}
+
+{{% block title %}
+{{ parent() }} :: Races Description
+{% endblock %}
+
+{% block body %}
+    <h1>{{ races.name }}:</h1>
+    <hr>
+    <p>{{ races.description }}</p>
+    <hr>
+    <a href="{{ url('show_races') }}">Back</a>
+
+{% endblock %}

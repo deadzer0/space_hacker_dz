@@ -1,0 +1,88 @@
+{% extends '@Game/base.html.twig' %}
+
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    {% block nav %}
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Space Hacker Admin</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{{ url('admin') }}">{{ 'admin.base.home'|trans }}</a></li>
+                        <li><a href="{{ url ('admin_view_list') }}">{{ 'admin.base.view'|trans }}</a></li>
+                        <li><a href="{{ url ('planets_index') }}">{{ 'admin.base.planets'|trans }}</a></li>
+                        <li><a href="{{ url ('races_index') }}">{{ 'admin.base.races'|trans }}</a></li>
+                        <li><a href="{{ url ('users_index') }}">{{ 'admin.base.players'|trans }}</a></li>
+
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </nav>
+    {% endblock %}
+
+    {%  block admin %}
+        <div class="text-center text-info">
+            <h4><img src="{{ asset('images/no_user_icon.png') }}" class="img-rounded" width="40" height="40" alt="users">
+                Здравейте, <a href="{{ path ('fos_user_profile_show') }}"> {{ app.user.username }}</a>
+            </h4>
+            <h5>последен вход: {{ app.user.lastLogin|date('Y-m-d H:i:s') }}</a></h5>
+            <a href="{{ url('wellcome') }}"><span class="glyphicon glyphicon-home">Начало </span></a>
+                <a href="{{ url('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-out">Изход</span></a>
+        </div>
+        <br>
+        <div class="bg-primary text-white text-left">
+            <p>Wellcome to Admin panel!</p>
+        </div>
+    {% endblock %}
+
+    {% block blocktool %}
+        <div id="shortsized">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Planets</h3>
+            </div>
+            <div class="panel-body">
+                <a href="{{ url ('planets_index') }}">View a list of all Planets</a>
+            </div>
+        </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Races</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="{{ url ('races_index') }}">View a list of all Races</a>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Users</h3>
+                </div>
+                <div class="panel-body">
+                    <a href="{{ url ('users_index') }}">View a list of all Players</a>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block footer %}
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted text-center">&copy {{ "now"|date("Y") }}, Deadzero</p>
+            </div>
+        </footer>
+    {% endblock %}
+
+{% endblock %}
+

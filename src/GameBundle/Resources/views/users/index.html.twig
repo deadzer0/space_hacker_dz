@@ -1,0 +1,46 @@
+{% extends 'GameBundle:admin:base_admin.html.twig' %}
+
+{% block title %}
+    {{ parent() }} :: Players
+{% endblock %}
+
+{% block body %}
+
+    {% block nav %}
+        {{ parent() }}
+    {% endblock %}
+
+    <div class="text-center">
+        <h1>Players</h1>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td><a href="">{{ user.id }}</a></td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <ul>
+                        <li class="btn btn-info">
+                            <a href="">Edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <ul>
+        <li class="btn btn-danger">
+            <a href="">Create a new user</a>
+        </li>
+    </ul>
+{% endblock %}

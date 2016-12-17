@@ -1,0 +1,33 @@
+{% extends '@Game/base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} :: Planets
+{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Name planet</th>
+            <th >X coordinates</th>
+            <th >Y coordinates</th>
+            <th>Actions</th>
+        </tr>
+
+            {% for planet in planets %}
+               <tr>
+                    <td>{{ planet.id }}</a></td>
+                    <td>{{ planet.name }}</td>
+                    <td >{{ planet.x }}</td>
+                    <td >{{ planet.y }}</td>
+                    <td>
+                        <a href="">Edit</a>
+                        <a href="">Delete</a>
+                   </td>
+               </tr>
+            {% endfor %}
+
+    </table>
+
+{% endblock %}

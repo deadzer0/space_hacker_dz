@@ -1,0 +1,22 @@
+default:
+  index:
+    game_rules: 'Правила'
+    terms_of_use: 'Условия'
+    wiki: 'Уики'
+    faq: 'ЧЗВ'
+    profile: 'Профил'
+    admin: 'Админ'
+    hello_anon: 'Здравейте, Анонимен'
+    hello_logged: 'Здравейте, '
+    login: 'Влизане'
+    registration: 'Регистация'
+    last_login: 'последно влизане'
+    logout: 'Изход'
+
+admin:
+  base:
+    home: 'Начало'
+    view: 'Виж списък'
+    planets: 'Планети'
+    races: 'Раси'
+    players: 'Играчи'
